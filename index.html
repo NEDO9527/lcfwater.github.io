@@ -6,7 +6,7 @@
   <title>Gravity-fed System | LCF</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=Merriweather:wght@300;400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet"/>
 
   <link rel="stylesheet" href="style.css"/>
 
@@ -18,9 +18,11 @@
       --panel:#fffaf4;
       --stroke:#efe3d6;
     }
+    body{font-family:"Rubik",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+
     .container{max-width:1200px;margin:0 auto;padding:24px}
 
-    /* ===== 统一的 PDP 布局（机器和滤芯都用这套） ===== */
+    /* 统一卡片布局 */
     .pdp{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
@@ -31,19 +33,21 @@
     }
     @media (max-width: 980px){ .pdp{grid-template-columns:1fr;} }
 
-    /* 单张主图容器（所有卡片统一高度 → 图片尺寸一致） */
     .main-view{
       width:100%;height:560px;border:1px solid #eee;border-radius:12px;
       background:#fff;display:grid;place-items:center
     }
     .main-view img{width:100%;height:100%;object-fit:contain}
 
-    /* 右侧信息 */
     .pdp-info h1, .pdp-info h2{
-      font-family:"Merriweather",serif;font-size:32px;line-height:1.25;margin:0 0 6px;
+      font-family:"Merriweather",serif;
+      font-size: clamp(22px, 2.0vw + 14px, 36px);
+      line-height: 1.25;
+      margin: 0 0 8px;
+      color:#2d1f17;
     }
     .pdp-model{color:#7b7b7b;margin:0 0 12px}
-    .price-row{display:flex;align-items:flex-end;gap:12px;margin:6px 0 18px}
+    .price-row{display:flex;align-items:flex-end;gap:12px;margin:8px 0 18px}
     .price{font-size:34px;font-weight:800;color:#d81b60}
     .compare{color:#a1a1a1;text-decoration:line-through}
 
@@ -59,22 +63,18 @@
     .btn-primary{background:#0071e3;color:#fff}
     .btn-secondary{background:#f1f6ff;color:#0b5bd3;border:1px solid #bcd5ff}
 
-    .badges{display:flex;gap:18px;flex-wrap:wrap;margin:12px 0 4px;color:#666}
-    .badge{display:flex;align-items:center;gap:8px}
-    .badge img{width:26px;height:26px;object-fit:contain}
-
-    /* 信息条 */
+    /* 信息条：仅文字，无图标 */
     .info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
     @media (max-width: 720px){ .info-strip{grid-template-columns:1fr} }
     .info-card{
-      display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--stroke);
-      border-radius:14px;background:var(--panel);color:#47392e
+      display:flex;flex-direction:column;justify-content:center;
+      gap:6px;padding:16px;border:1px solid var(--stroke);
+      border-radius:14px;background:var(--panel);color:#47392e;
+      min-height:116px;text-align:center
     }
-    .info-card strong{display:block}
+    .info-card strong{display:block;font-weight:800}
 
-    /* 价格标签（自动生成在图片下，可保留） */
-    .price-tag{display:inline-block;margin-top:10px;padding:6px 12px;border:1px solid #e6e8ef;border-radius:999px;background:#f7f9ff;font-weight:700;font-size:14px;line-height:1;letter-spacing:.2px}
-    .price-tag small{font-weight:600;opacity:.75;margin-right:6px}
+    .section{max-width:1200px;margin:36px auto}
   </style>
 </head>
 <body>
@@ -99,18 +99,20 @@
 
   <main class="container">
 
-    <!-- ================== 机器（系统） ================== -->
+    <!-- ============ 机器（系统） ============ -->
     <section class="pdp" id="system">
       <div class="main-view">
-        <img src="images/gt-main.jpg" alt="LCF-GT Professional"/> <!-- EDIT: 机器主图 -->
+        <img src="images/gt-main.jpg" alt="LCF-GT Professional"/>
       </div>
       <div class="pdp-info">
-        <h1>LCF 𝐒𝐢𝐥𝐯𝐞𝐫 𝐈𝐨𝐧𝐬 Enhanced Gravity-fed Water Filter System, NSF/ANSI 42&372 Standard, Reduces 99% Chlorine, Fluoride & Contaminants - Includes 6 Filters</h1> <!-- EDIT: 标题 -->
-        <p class="pdp-model">Model: <strong>LCF-GT-Professional</strong></p>  <!-- EDIT: 型号 -->
+        <h1>
+          LCF 𝐒𝐢𝐥𝐯𝐞𝐫 𝐈𝐨𝐧𝐬 Enhanced Gravity-fed Water Filter System, NSF/ANSI 42&amp;372 Standard, Reduces 99% Chlorine, Fluoride &amp; Contaminants - Includes 6 Filters
+        </h1>
+        <p class="pdp-model">Model: <strong>LCF-GT-Professional</strong></p>
 
         <div class="price-row">
-          <div class="price">$199.99</div>    <!-- EDIT: 现价 -->
-          <div class="compare">$229.99</div>  <!-- EDIT: 原价（可删） -->
+          <div class="price">$199.99</div>
+          <div class="compare">$229.99</div>
         </div>
 
         <div class="qty-row">
@@ -123,45 +125,41 @@
         </div>
 
         <div class="cta-row">
-          <a class="btn-primary" href="https://www.amazon.com/dp/B0BXJ8985Y" target="_blank">Add to cart</a>  <!-- EDIT: 链接 -->
-          <a class="btn-secondary" href="https://www.amazon.com/dp/B0BXJ8985Y" target="_blank">Buy now</a>    <!-- EDIT: 链接 -->
-        </div>
-
-        <div class="badges">
-          <div class="badge"><img src="images/nsf.png" alt="NSF/ANSI"><span>NSF/ANSI</span></div>
-          <div class="badge"><img src="images/warranty.png" alt="Warranty"><span>1-Year Warranty</span></div>
-          <div class="badge"><img src="images/support.png" alt="Support"><span>24/7 Support</span></div>
+          <a class="btn-primary" href="https://www.amazon.com/dp/B0BXJ8985Y" target="_blank">Add to cart</a>
+          <a class="btn-secondary" href="https://www.amazon.com/dp/B0BXJ8985Y" target="_blank">Buy now</a>
         </div>
 
         <div class="info-strip">
           <div class="info-card">
-            <img src="images/icon-shipping.png" width="32" height="32" alt="Free Shipping"/>
-            <div><strong>Free Shipping</strong><span>On all orders</span></div>
+            <strong>Free Shipping</strong>
+            <span>On all orders</span>
           </div>
           <div class="info-card">
-            <img src="images/icon-return.png" width="32" height="32" alt="30-Day Return"/>
-            <div><strong>30-Day Return</strong><span>No worries guarantee</span></div>
+            <strong>30-Day Return</strong>
+            <span>No worries guarantee</span>
           </div>
           <div class="info-card">
-            <img src="images/icon-manual.png" width="32" height="32" alt="User Manual"/>
-            <div><strong>User Manual</strong><span><a href="manuals/lcf-gt.pdf" target="_blank">Detailed instruction</a></span></div>
+            <strong>1-Year Warranty</strong>
+            <span>Quality You Can Trust</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================== 滤芯 1（与机器同版式 & 同尺寸） ================== -->
+    <!-- ============ 滤芯 1 ============ -->
     <section class="pdp" id="filter-carbon">
       <div class="main-view">
-        <img src="images/gt-carbon.jpg" alt="LCF-GT-Carbon Filter"/> <!-- EDIT: 滤芯图 -->
+        <img src="images/gt-carbon.jpg" alt="LCF Silver Ions Enhanced Black Carbon Filters (Pack of 3)"/>
       </div>
       <div class="pdp-info">
-        <h2>LCF 𝐒𝐢𝐥𝐯𝐞𝐫 𝐈𝐨𝐧𝐬 Enhanced Black Carbon Filters, for Berkey® BB9-2® Black Filters, Berkey® Gravity Water Filter System and Waterdrop King Tank Series(Pack of 3)</h2>                         <!-- EDIT: 名称 -->
-        <p class="pdp-model">Model: <strong>LCF-GT-Carbon</strong></p>  <!-- EDIT: 型号 -->
+        <h2>
+          LCF 𝐒𝐢𝐥𝐯𝐞𝐫 𝐈𝐨𝐧𝐬 Enhanced Black Carbon Filters, for Berkey® BB9-2® Black Filters, Berkey® Gravity Water Filter System and Waterdrop King Tank Series (Pack of 3)
+        </h2>
+        <p class="pdp-model">Model: <strong>LCF-GT-Carbon</strong></p>
 
         <div class="price-row">
-          <div class="price">$79.99</div>     <!-- EDIT: 现价 -->
-          <div class="compare">$99.99</div>   <!-- EDIT: 原价（可删） -->
+          <div class="price">$79.99</div>
+          <div class="compare">$99.99</div>
         </div>
 
         <div class="qty-row">
@@ -174,24 +172,41 @@
         </div>
 
         <div class="cta-row">
-          <a class="btn-primary" href="https://www.amazon.com/dp/B0BXJ7CJQV" target="_blank">Add to cart</a>  <!-- EDIT -->
-          <a class="btn-secondary" href="https://www.amazon.com/dp/B0BXJ7CJQV" target="_blank">Buy now</a>    <!-- EDIT -->
+          <a class="btn-primary" href="https://www.amazon.com/dp/B0BXJ7CJQV" target="_blank">Add to cart</a>
+          <a class="btn-secondary" href="https://www.amazon.com/dp/B0BXJ7CJQV" target="_blank">Buy now</a>
+        </div>
+
+        <div class="info-strip">
+          <div class="info-card">
+            <strong>Free Shipping</strong>
+            <span>On all orders</span>
+          </div>
+          <div class="info-card">
+            <strong>30-Day Return</strong>
+            <span>No worries guarantee</span>
+          </div>
+          <div class="info-card">
+            <strong>1-Year Warranty</strong>
+            <span>Quality You Can Trust</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================== 滤芯 2（与机器同版式 & 同尺寸） ================== -->
+    <!-- ============ 滤芯 2 ============ -->
     <section class="pdp" id="filter-fluoride">
       <div class="main-view">
-        <img src="images/gt-fluoride.jpg" alt="LCF-GT-Fluoride Filter"/> <!-- EDIT -->
+        <img src="images/gt-fluoride.jpg" alt="LCF Gravity-fed Water Filter System Fluoride Filters"/>
       </div>
       <div class="pdp-info">
-        <h2>LCF Gravity-fed Water Filter System, 3 Gallons Stainless-Steel System with 6 Filters, Metal Water Level Spigot and Stand, Reduces Chlorine & Fluoride (Fluoride Filters)</h2>                        <!-- EDIT -->
-        <p class="pdp-model">Model: <strong>LCF-GT-Fluoride</strong></p>  <!-- EDIT -->
+        <h2>
+          LCF Gravity-fed Water Filter System, 3 Gallons Stainless-Steel System with 6 Filters, Metal Water Level Spigot and Stand, Reduces Chlorine &amp; Fluoride (Fluoride Filters)
+        </h2>
+        <p class="pdp-model">Model: <strong>LCF-GT-Fluoride</strong></p>
 
         <div class="price-row">
-          <div class="price">$79.99</div>     <!-- EDIT -->
-          <div class="compare">$99.99</div>   <!-- EDIT/可删 -->
+          <div class="price">$79.99</div>
+          <div class="compare">$99.99</div>
         </div>
 
         <div class="qty-row">
@@ -204,8 +219,23 @@
         </div>
 
         <div class="cta-row">
-          <a class="btn-primary" href="https://www.amazon.com/dp/B0DGCXGHYR" target="_blank">Add to cart</a>  <!-- EDIT -->
-          <a class="btn-secondary" href="https://www.amazon.com/dp/B0DGCXGHYR" target="_blank">Buy now</a>    <!-- EDIT -->
+          <a class="btn-primary" href="https://www.amazon.com/dp/B0DGCXGHYR" target="_blank">Add to cart</a>
+          <a class="btn-secondary" href="https://www.amazon.com/dp/B0DGCXGHYR" target="_blank">Buy now</a>
+        </div>
+
+        <div class="info-strip">
+          <div class="info-card">
+            <strong>Free Shipping</strong>
+            <span>On all orders</span>
+          </div>
+          <div class="info-card">
+            <strong>30-Day Return</strong>
+            <span>No worries guarantee</span>
+          </div>
+          <div class="info-card">
+            <strong>1-Year Warranty</strong>
+            <span>Quality You Can Trust</span>
+          </div>
         </div>
       </div>
     </section>
@@ -218,26 +248,13 @@
   </footer>
 
   <script>
-    // 数量步进器（多个卡片共用）
+    // 数量步进器
     function stepQty(id, delta){
       const el = document.getElementById(id);
       let v = parseInt(el.value||'1',10);
       v = isNaN(v) ? 1 : v + delta;
       el.value = Math.max(1, v);
     }
-
-    // 如果你依然想在每张图片下显示“MSRP”标签，可把 data-price 写到 <img> 上，然后启用下面这段
-    // (function(){
-    //   const nodes = document.querySelectorAll('img[data-price]');
-    //   nodes.forEach(node=>{
-    //     const num = Number(node.dataset.price);
-    //     const formatted = isNaN(num) ? node.dataset.price : num.toLocaleString('en-US',{style:'currency',currency:'USD'});
-    //     const tag = document.createElement('div');
-    //     tag.className = 'price-tag';
-    //     tag.innerHTML = `<small>MSRP</small>${formatted}`;
-    //     node.parentElement.insertAdjacentElement('afterend', tag);
-    //   });
-    // })();
   </script>
 </body>
 </html>
