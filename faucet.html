@@ -4,48 +4,244 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Faucet Mount | LCF</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet"/>
+
   <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    :root{
+      --panel:#fffaf4;
+      --stroke:#efe3d6;
+    }
+    body{font-family:"Rubik",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+
+    /* 统一卡片布局（机器与滤芯共用） */
+    .pdp{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:28px;
+      background:#fff;border:1px solid #eee;border-radius:18px;
+      padding:22px;box-shadow:0 8px 28px rgba(0,0,0,.05);
+      margin-bottom:28px;
+    }
+    @media (max-width: 980px){ .pdp{grid-template-columns:1fr;} }
+
+    .main-view{
+      width:100%;height:560px;border:1px solid #eee;border-radius:12px;
+      background:#fff;display:grid;place-items:center
+    }
+    .main-view img{width:100%;height:100%;object-fit:contain}
+
+    .pdp-info h1, .pdp-info h2{
+      font-family:"Merriweather",serif;
+      font-size: clamp(22px, 2.0vw + 14px, 34px);
+      line-height: 1.25;
+      margin: 0 0 8px;
+      color:#2d1f17;
+    }
+    .pdp-model{color:#7b7b7b;margin:0 0 12px}
+
+    .price-row{display:flex;align-items:flex-end;gap:12px;margin:8px 0 18px}
+    .price{font-size:34px;font-weight:800;color:#d81b60}
+    .compare{color:#a1a1a1;text-decoration:line-through}
+
+    .qty-row{display:flex;align-items:center;gap:14px;margin:10px 0 16px}
+    .stepper{display:inline-flex;align-items:center;border:1px solid #ddd;border-radius:999px;overflow:hidden}
+    .stepper button{width:36px;height:36px;border:0;background:#f4f4f4;font-weight:700;cursor:pointer}
+    .stepper input{width:46px;height:36px;border:0;text-align:center}
+
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+    .btn-primary,.btn-secondary{
+      display:inline-block;padding:12px 20px;border-radius:999px;font-weight:800;text-decoration:none;text-align:center
+    }
+    .btn-primary{background:#0071e3;color:#fff}
+    .btn-secondary{background:#f1f6ff;color:#0b5bd3;border:1px solid #bcd5ff}
+
+    /* 信息条：仅文字，无图标 */
+    .info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    @media (max-width: 720px){ .info-strip{grid-template-columns:1fr} }
+    .info-card{
+      display:flex;flex-direction:column;justify-content:center;
+      gap:6px;padding:16px;border:1px solid var(--stroke);
+      border-radius:14px;background:var(--panel);color:#47392e;
+      min-height:116px;text-align:center
+    }
+    .info-card strong{display:block;font-weight:800}
+  </style>
 </head>
 <body>
 
   <div class="top-bar">
-    Shop Faucet Mount Filters
+    New Arrival! <a href="index.html">Back to Gravity-fed</a>
   </div>
 
   <header class="site-header">
-    <div class="logo"><img src="images/logo.jpg" alt="LCF Logo"/></div>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="LCF Logo"/>
+    </div>
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">Gravity-fed</a></li>
         <li><a href="countertop.html">Countertop</a></li>
         <li><a href="undersink.html">Under Sink</a></li>
-        <li><a href="faucet.html">Faucet Mount</a></li>
+        <li><a class="active" href="faucet.html">Faucet Mount</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="products">
-      <div class="product-section">
-        <h2>Faucet Mount Filter</h2>
-        <img class="main-img" src="images/fw-main.jpg" alt="LCF-FW-02"/>
-        <p class="model">Model: LCF-FW-02</p>
-        <a href="https://www.amazon.com/dp/B0DGCW9X2B" class="btn" target="_blank">Buy System</a>
-        <div class="filters">
-          <div>
-            <img src="images/fw-filter.jpg" alt="LCF-FWR-01 Filter"/>
-            <p class="model">LCF-FWR-01 Filter</p>
-            <a href="https://www.amazon.com/dp/B0878CY5HB" target="_blank">Buy Filter</a>
+  <main class="container">
+
+    <!-- ============ 机器：LCF-FW-02 ============ -->
+    <section class="pdp" id="fw-02">
+      <div class="main-view">
+        <!-- 确认你仓库已有：images/fw-main.jpg -->
+        <img src="images/fw-main.jpg" alt="LCF-FW-02 Faucet Water Filter"/>
+      </div>
+      <div class="pdp-info">
+        <h1>
+          LCF 360° Rotating Stainless-Steel Faucet Water Filter - High Flow, Mineral-Enhanced Tap Water Filter, Reduces Chlorine, Heavy Metals and Bad Taste, Easy Install, 320 Gallons, Kitchen Sink Ideal
+        </h1>
+        <p class="pdp-model">Model: <strong>LCF-FW-02</strong></p>
+
+        <div class="price-row">
+          <div class="price">$24.99</div>
+          <div class="compare">$34.99</div>
+        </div>
+
+        <div class="qty-row">
+          <label>Quantity</label>
+          <div class="stepper">
+            <button type="button" aria-label="decrease" onclick="stepQty('qty-fw',-1)">−</button>
+            <input id="qty-fw" value="1" inputmode="numeric" pattern="[0-9]*">
+            <button type="button" aria-label="increase" onclick="stepQty('qty-fw',1)">+</button>
           </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn-primary" href="#" target="_blank">Add to cart</a>   <!-- TODO: 替换为购买链接 -->
+          <a class="btn-secondary" href="#" target="_blank">Buy now</a>
+        </div>
+
+        <div class="info-strip">
+          <div class="info-card"><strong>Free Shipping</strong><span>On all orders</span></div>
+          <div class="info-card"><strong>30-Day Return</strong><span>No worries guarantee</span></div>
+          <div class="info-card"><strong>1-Year Warranty</strong><span>Quality You Can Trust</span></div>
         </div>
       </div>
     </section>
+
+    <!-- ============ 滤芯：LCF-FWR-01 ============ -->
+    <section class="pdp" id="fwr-01">
+      <div class="main-view">
+        <!-- 确认你仓库已有：images/fw-filter.jpg -->
+        <img src="images/fw-filter.jpg" alt="LCF-FWR-01 Replacement Filters (4 Pack)"/>
+      </div>
+      <div class="pdp-info">
+        <h2>
+          ACF Replacement Filters for LCF Faucet Mount Filter, Advanced Activated Carbon Fiber(ACF), Reduce Chlorine (taste and odor), Lead, Last Up to 6 Months (4 Pack)
+        </h2>
+        <p class="pdp-model">Model: <strong>LCF-FWR-01</strong></p>
+
+        <div class="price-row">
+          <div class="price">$39.99</div>
+          <div class="compare">$49.99</div>
+        </div>
+
+        <div class="qty-row">
+          <label>Quantity</label>
+          <div class="stepper">
+            <button type="button" aria-label="decrease" onclick="stepQty('qty-fwr',-1)">−</button>
+            <input id="qty-fwr" value="1" inputmode="numeric" pattern="[0-9]*">
+            <button type="button" aria-label="increase" onclick="stepQty('qty-fwr',1)">+</button>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn-primary" href="#" target="_blank">Add to cart</a>   <!-- TODO: 替换为购买链接 -->
+          <a class="btn-secondary" href="#" target="_blank">Buy now</a>
+        </div>
+
+        <div class="info-strip">
+          <div class="info-card"><strong>Free Shipping</strong><span>On all orders</span></div>
+          <div class="info-card"><strong>30-Day Return</strong><span>No worries guarantee</span></div>
+          <div class="info-card"><strong>1-Year Warranty</strong><span>Quality You Can Trust</span></div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <p>Questions? Email <a href="mailto:support@lcfwater.com">support@lcfwater.com</a></p>
-    <p>© 2025 LCF Water Filters</p>
-  </footer>
+  <!-- ========== LCF FOOTER START (简洁版 with contact) ========== -->
+  <footer class="site-footer" style="margin-top:60px;">
+    <!-- 顶部蓝色订阅区 -->
+    <section style="background:#0053c7;color:#fff;text-align:center;padding:60px 20px 40px;border-radius:10px 10px 0 0;">
+      <h2 style="font-size:36px;font-weight:700;margin-bottom:10px;">
+        Filter Better <span style="color:#80d8ff;">Live Healthier</span>
+      </h2>
 
+      <div style="max-width:640px;margin:30px auto 0;background:#fff;border-radius:8px;padding:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
+        <div style="flex:1;text-align:left;color:#333;">
+          <h3 style="margin:0 0 4px 0;font-size:20px;">Exclusive <span style="color:#0053c7;">Benefits</span> For You</h3>
+          <p style="margin:0;font-size:15px;color:#666;">Subscribe to get exclusive deals, free giveaways, and latest news.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <input type="email" placeholder="Enter your email"
+                 style="padding:10px 14px;border:1px solid #ccc;border-radius:6px;min-width:220px;"/>
+          <button style="background:#0053c7;color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:600;cursor:pointer;">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 底部区域：国家/语言 + 联系方式 + 版权 -->
+    <section style="background:#0044aa;color:#fff;padding:30px 20px;">
+      <div style="max-width:1200px;margin:auto;border-top:1px solid rgba(255,255,255,0.3);padding-top:20px;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;">
+          <div style="display:flex;gap:40px;flex-wrap:wrap;">
+            <div>
+              <label>Country</label>
+              <select style="margin-left:8px;padding:6px 10px;border-radius:6px;">
+                <option>United States</option>
+                <option>Canada</option>
+                <option>Mexico</option>
+              </select>
+            </div>
+            <div>
+              <label>Language</label>
+              <select style="margin-left:8px;padding:6px 10px;border-radius:6px;">
+                <option>English</option>
+                <option>Español</option>
+                <option>Français</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 联系邮箱 -->
+        <p style="text-align:center;margin:18px 0 8px;font-size:15px;color:#e6f0ff;">
+          Questions? Email <a href="mailto:support@lcfwater.com" style="color:#fff;text-decoration:underline;">support@lcfwater.com</a>
+        </p>
+
+        <p style="text-align:center;font-size:14px;color:#bcdcff;margin-top:6px;">
+          © 2025 LCF Water Filters. All Rights Reserved.
+        </p>
+      </div>
+    </section>
+  </footer>
+  <!-- ========== LCF FOOTER END ========== -->
+
+  <script>
+    // 数量步进器（多个卡片通用）
+    function stepQty(id, delta){
+      const el = document.getElementById(id);
+      let v = parseInt(el.value||'1',10);
+      v = isNaN(v) ? 1 : v + delta;
+      el.value = Math.max(1, v);
+    }
+  </script>
 </body>
 </html>
