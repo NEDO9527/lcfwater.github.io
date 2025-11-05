@@ -1,66 +1,185 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Gravity-fed System | LCF</title>
+<!-- ====== 放到 <head> 里（或你的主样式文件） ====== -->
+<style>
+  /* 布局基础 */
+  .section { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  .card {
+    background: #fffaf4;
+    border: 1px solid #eee4da;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.05);
+  }
+  .title { font-size: 34px; font-weight: 800; color: #6b3f26; text-align: center; margin: 0 0 16px; }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&family=Merriweather:wght@300;400&display=swap" rel="stylesheet"/>
+  /* —— 价格标签 —— */
+  .price-tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: 1px solid #e6e8ef;
+    border-radius: 999px;
+    background: #f7f9ff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: .2px;
+  }
+  .price-tag small { font-weight: 600; opacity: .75; margin-right: 6px; }
 
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
+  /* —— 主系统大图 —— */
+  .system-figure { text-align: center; margin: 0 auto 18px; }
+  .system-media {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    /* 让不同源图片也能统一展示 */
+    aspect-ratio: 4 / 3;
+    /* 桌面更高一点的展示高度 */
+    max-height: 520px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .system-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;      /* 保持比例不变地“塞进容器” */
+    image-rendering: auto;
+  }
 
-  <div class="top-bar">
-    New Arrival! <a href="https://www.amazon.com/dp/B0BXJ8985Y" target="_blank">Shop Gravity-fed System</a>
-  </div>
+  /* —— 滤芯卡片（重点：统一比例/尺寸） —— */
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 16px;
+  }
+  @media (min-width: 900px) {
+    .filters { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
 
-  <header class="site-header">
-    <div class="logo">
-      <img src="images/logo.jpg" alt="LCF Logo"/>
-    </div>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html">Gravity-fed</a></li>
-        <li><a href="countertop.html">Countertop</a></li>
-        <li><a href="undersink.html">Under Sink</a></li>
-        <li><a href="faucet.html">Faucet Mount</a></li>
-      </ul>
-    </nav>
-  </header>
+  .filter-card {
+    background: #fbf7f0;
+    border: 1px solid #efe3d6;
+    border-radius: 16px;
+    padding: 14px 14px 18px;
+    text-align: center;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .filter-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.06); }
 
-  <main class="container">
+  /* 统一滤芯图容器的显示高度，解决“比例不一致”的问题 */
+  .filter-media {
+    width: 100%;
+    /* 用统一的展示高度；可按需要微调数值 */
+    height: 210px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    display: grid;
+    place-items: center;
+  }
+  .filter-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* 关键：让每张滤芯图都被“等比塞进来” */
+  }
 
-    <!-- Gravity-fed -->
-    <section class="products" id="gt">
-      <div class="product-section">
-        <h2>Gravity-fed System</h2>
-        <img class="main-img" src="images/gt-main.jpg" alt="LCF-GT Professional"/>
-        <p class="model">Model: LCF-GT-Professional</p>
-        <a href="https://www.amazon.com/dp/B0BXJ8985Y" class="btn" target="_blank">Buy System</a>
+  .filter-name { margin: 10px 0 6px; font-weight: 700; color: #5a412f; }
+  .btn {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #7a4a2c;
+    color: #fff; text-decoration: none; font-weight: 700; font-size: 14px;
+  }
+  .btn:hover { opacity: .9; }
+</style>
 
-        <div class="filters">
-          <div class="filter-card">
-            <img src="images/gt-carbon.jpg" alt="LCF-GT-Carbon Filter"/>
-            <p class="model">LCF-GT-Carbon Filter</p>
-            <a href="https://www.amazon.com/dp/B0BXJ7CJQV" target="_blank">Buy Filter</a>
-          </div>
-          <div class="filter-card">
-            <img src="images/gt-fluoride.jpg" alt="LCF-GT-Fluoride Filter"/>
-            <p class="model">LCF-GT-Fluoride Filter</p>
-            <a href="https://www.amazon.com/dp/B0DGCXGHYR" target="_blank">Buy Filter</a>
-          </div>
-        </div>
+<!-- ====== 放到页面相应位置（HTML 内容） ====== -->
+<section class="section">
+  <div class="card">
+    <h2 class="title">Gravity-fed System</h2>
+
+    <!-- 主机大图（比例正确） -->
+    <figure class="system-figure" data-price="299.00">
+      <div class="system-media">
+        <img src="/assets/img/gravity-system.png" alt="LCF-GT-Professional">
       </div>
-    </section>
+      <!-- 价格标签将由 JS 自动插入到这里 -->
+    </figure>
 
-  </main>
+    <p style="text-align:center;margin:8px 0 14px;color:#6b574a;">
+      Model: LCF-GT-Professional
+    </p>
+    <p style="text-align:center;">
+      <a href="https://www.amazon.com/..." class="btn">Buy System</a>
+    </p>
 
-  <footer class="site-footer">
-    <p>Questions? Email <a href="mailto:support@lcfwater.com">support@lcfwater.com</a></p>
-    <p>© 2025 LCF Water Filters</p>
-  </footer>
+    <!-- 相关滤芯（统一尺寸/比例 + 价格标签） -->
+    <div class="filters">
+      <!-- 例1：黑炭滤芯（第一张比例“本来就对”也保持统一） -->
+      <article class="filter-card">
+        <div class="filter-media">
+          <img class="filter-img" src="/assets/img/filters/gt-carbon.png" alt="LCF-GT Carbon Filter" data-price="79.99">
+        </div>
+        <div class="filter-name">LCF-GT-Carbon Filter</div>
+        <a class="btn" href="https://www.amazon.com/...">Buy Filter</a>
+      </article>
 
-</body>
-</html>
+      <!-- 例2：氟化物滤芯（后续“比例不对”的图会被等比规范化） -->
+      <article class="filter-card">
+        <div class="filter-media">
+          <img class="filter-img" src="/assets/img/filters/gt-fluoride.png" alt="LCF-GT Fluoride Filter" data-price="59.99">
+        </div>
+        <div class="filter-name">LCF-GT-Fluoride Filter</div>
+        <a class="btn" href="https://www.amazon.com/...">Buy Filter</a>
+      </article>
+
+      <!-- 你可以继续添加更多滤芯卡片，全部会自动保持同尺寸与价签 -->
+      <!--
+      <article class="filter-card">
+        <div class="filter-media">
+          <img class="filter-img" src="/assets/img/filters/gt-alkaline.png" alt="LCF-GT Alkaline Filter" data-price="69.00">
+        </div>
+        <div class="filter-name">LCF-GT-Alkaline Filter</div>
+        <a class="btn" href="https://www.amazon.com/...">Buy Filter</a>
+      </article>
+      -->
+    </div>
+  </div>
+</section>
+
+<!-- ====== 放到 </body> 前（自动生成“零售价标签”） ====== -->
+<script>
+  // 给所有带 data-price 的“图片/figure”生成价格标签
+  (function () {
+    // 允许两种写法：figure[data-price] 或 img[data-price]
+    const priceHolders = document.querySelectorAll('figure[data-price], img[data-price]');
+
+    priceHolders.forEach(node => {
+      // 取到价格数值/字符串
+      const raw = node.getAttribute('data-price');
+      // 兼容 img[data-price] 的情况
+      const container = node.tagName.toLowerCase() === 'img'
+        ? node.parentElement
+        : node;
+
+      // 创建标签元素
+      const tag = document.createElement('div');
+      tag.className = 'price-tag';
+
+      // 处理格式：数字 -> 美元格式；若已写“USD 79.99”则原样显示
+      const num = Number(raw);
+      const text = isNaN(num)
+        ? raw
+        : num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+      tag.innerHTML = `<small>MSRP</small>${text}`;
+
+      // 插入到图片/figure的后面
+      container.insertAdjacentElement('afterend', tag);
+    });
+  })();
+</script>
